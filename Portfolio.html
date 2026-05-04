@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neel Jadhav | MIT AOE Engineering Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d4af37;
+            --bg: #000000;
+            --surface: #0a0a0a;
+            --surface-light: #111111;
+            --border: rgba(212, 175, 55, 0.2);
+            --text-main: #ffffff;
+            --text-dim: #999999;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { 
+            background: var(--bg); 
+            color: var(--text-main); 
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- PRESTIGE NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 25px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(20px);
+            z-index: 1000; border-bottom: 1px solid var(--border);
+        }
+        .logo { font-family: 'Syne'; font-weight: 800; font-size: 22px; color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- MASSIVE HERO SECTION --- */
+        .hero {
+            height: 110vh; display: flex; align-items: center; padding: 0 8%;
+            background: radial-gradient(circle at 70% 30%, #1a1500 0%, transparent 50%);
+        }
+        .hero-grid {
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center;
+        }
+        .hero-text h1 {
+            font-family: 'Syne'; font-size: clamp(60px, 10vw, 140px);
+            line-height: 0.85; margin-bottom: 25px; text-transform: uppercase;
+        }
+        .hero-text h1 span { color: transparent; -webkit-text-stroke: 1px var(--primary); }
+        
+        .hero-image-wrap {
+            position: relative; padding: 20px;
+        }
+        .hero-image {
+            width: 100%; height: 600px; object-fit: cover;
+            border-radius: 40px; border: 1px solid var(--border);
+            filter: grayscale(20%) brightness(0.8);
+        }
+        .hero-badge {
+            position: absolute; bottom: 50px; left: -30px;
+            background: var(--primary); color: #000; padding: 20px;
+            font-family: 'JetBrains Mono'; font-weight: 800; border-radius: 4px;
+        }
+
+        /* --- SECTION GENERIC --- */
+        section { padding: 120px 8%; position: relative; }
+        .section-title { font-family: 'Syne'; font-size: 50px; margin-bottom: 60px; color: var(--primary); text-transform: uppercase; }
+
+        /* --- ABOUT / MISSION --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; }
+        .vision-card { background: var(--surface); padding: 50px; border-radius: 30px; border: 1px solid var(--border); }
+        .vision-card h3 { margin-bottom: 20px; font-size: 28px; font-family: 'Syne'; }
+
+        /* --- ACADEMIC TIMELINE --- */
+        .timeline { position: relative; max-width: 1000px; margin: 0 auto; }
+        .timeline-item { 
+            padding: 40px; background: var(--surface-light); 
+            border-radius: 20px; margin-bottom: 30px; border-left: 4px solid var(--primary);
+            transition: 0.4s;
+        }
+        .timeline-item:hover { transform: translateX(15px); background: #151515; }
+        .timeline-date { font-family: 'JetBrains Mono'; color: var(--primary); font-size: 14px; margin-bottom: 10px; }
+
+        /* --- TECH ECOSYSTEM --- */
+        .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .skill-card {
+            background: var(--surface); padding: 35px; border-radius: 24px;
+            border: 1px solid var(--border); text-align: center;
+        }
+        .skill-card i { font-size: 40px; color: var(--primary); margin-bottom: 20px; display: block; }
+
+        /* --- DETAILED FOOTER --- */
+        .mega-footer {
+            background: #050505; border-top: 1px solid var(--border);
+            padding: 100px 8% 50px 8%;
+        }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 80px; }
+        .footer-cta h2 { font-family: 'Syne'; font-size: clamp(40px, 6vw, 90px); line-height: 1; margin-bottom: 30px; }
+        .contact-btn {
+            display: inline-block; padding: 20px 45px; background: var(--primary);
+            color: #000; text-decoration: none; font-weight: 800; border-radius: 100px;
+            text-transform: uppercase; font-size: 14px; letter-spacing: 2px;
+        }
+
+        /* --- ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(50px); transition: 0.8s ease-out; }
+        .active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .hero-grid, .about-grid, .footer-grid { grid-template-columns: 1fr; }
+            .hero { height: auto; padding-top: 150px; }
+            .hero-image { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">NEEL GAURAV JADHAV</div>
+        <ul class="nav-links">
+            <li><a href="#about">MISSION</a></li>
+            <li><a href="#academics">EDUCATION</a></li>
+            <li><a href="#tech">SYSTEMS</a></li>
+            <li><a href="#contact">CONNECT</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <span style="font-family: 'JetBrains Mono'; color: var(--primary);">// FIRST-YEAR ENGINEERING CANDIDATE</span>
+                <h1>THE FUTURE<br><span>ENGINEER</span></h1>
+                <p style="font-size: 18px; color: var(--text-dim); margin-top: 20px; max-width: 500px;">
+                    Currently pursuing Civil Engineering at MIT AOE, Alandi. 
+                    Specializing in structural logic, AI integration, and sustainable urban frameworks.
+                </p>
+            </div>
+            <div class="hero-image-wrap">
+                <!-- Ensure your photo is named neel-profile.jpg in the same folder -->
+                <img src="img.jpg" alt="Neel Gaurav Jadhav" class="hero-image">
+                <div class="hero-badge">PUNE, INDIA</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION SECTION -->
+    <section id="about">
+        <h2 class="section-title">The Philosophy</h2>
+        <div class="about-grid reveal">
+            <div class="vision-card" style="background: var(--primary); color: #000;">
+                <h3 style="font-family: 'Syne';">MISSION</h3>
+                <p>To leverage structural engineering principles to develop public infrastructure that defines the 21st-century landscape of India.</p>
+            </div>
+            <div class="vision-card">
+                <h3>STRATEGIC INTENT</h3>
+                <p style="color: var(--text-dim); line-height: 1.8;">
+                    Beyond the classroom at <b>MIT AOE</b>, my focus lies in the practical application of 
+                    civil mechanics. I am building a foundation that bridges the gap between traditional 
+                    blueprint designs and the next generation of smart-city technologies.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACADEMICS SECTION -->
+    <section id="academics" style="background: var(--surface);">
+        <h2 class="section-title">Education Roadmap</h2>
+        <div class="timeline">
+            <!-- CURRENT STATUS -->
+            <div class="timeline-item reveal">
+                <div class="timeline-date">2025 - PRESENT</div>
+                <h3>B.E. CIVIL ENGINEERING (First Year)</h3>
+                <p style="color: var(--primary);">MIT Academy of Engineering, Alandi, Pune</p>
+                <p style="color: var(--text-dim); margin-top: 10px;">Deep-diving into Structural Analysis, Engineering Mechanics, and Graphics. Applying theoretical physics to real-world structural challenges.</p>
+            </div>
+            <!-- 12th GRADE -->
+            <div class="timeline-item reveal">
+                <div class="timeline-date">2024 - 2025</div>
+                <h3>HIGHER SECONDARY CERTIFICATE (12th)</h3>
+                <p style="color: var(--text-dim);">Science Stream - Passed with focus on Advanced Mathematics and Applied Physics.</p>
+            </div>
+            <!-- 10th GRADE -->
+            <div class="timeline-item reveal">
+                <div class="timeline-date">2022 - 2023</div>
+                <h3>SECONDARY SCHOOL CERTIFICATE (10th)</h3>
+                <p style="color: var(--text-dim);">Passed with a strong foundation in technical sciences and logic-building.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH SECTION -->
+    <section id="tech">
+        <h2 class="section-title">Technical Ecosystem</h2>
+        <div class="skill-grid">
+            <div class="skill-card reveal">
+                <span style="font-size: 30px;">🏗️</span>
+                <h3>STRUCTURAL</h3>
+                <p style="color: var(--text-dim); margin-top: 10px;">Fundamental grasp of BIM and Engineering Graphics.</p>
+            </div>
+            <div class="skill-card reveal">
+                <span style="font-size: 30px;">🐍</span>
+                <h3>PYTHON</h3>
+                <p style="color: var(--text-dim); margin-top: 10px;">Cisco Networking Academy Certified - Foundations in Automation.</p>
+            </div>
+            <div class="skill-card reveal">
+                <span style="font-size: 30px;">🤖</span>
+                <h3>AI SYSTEMS</h3>
+                <p style="color: var(--text-dim); margin-top: 10px;">Claude AI & Prompt Engineering specialization via Anthropic guidelines.</p>
+            </div>
+            <div class="skill-card reveal">
+                <span style="font-size: 30px;">🏅</span>
+                <h3>DIGITAL 101</h3>
+                <p style="color: var(--text-dim); margin-top: 10px;">30-Hour Nasscom certification in digital literacy and tech-transformation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEGA FOOTER -->
+    <footer class="mega-footer" id="contact">
+        <div class="footer-grid">
+            <div class="footer-cta">
+                <span class="timeline-date">// READY FOR COLLABORATION</span>
+                <h2>LETS BUILD THE<br><span style="color: var(--primary);">NEW INDIA.</span></h2>
+                <a href="mailto:neelgjadhav1988@gmail.com" class="contact-btn">Get In Touch</a>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 20px; color: var(--primary);">CONTACT</h4>
+                <p>+91 87678 97271</p>
+                <p style="margin-top: 10px;">neelgjadhav1988@gmail.com</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 20px; color: var(--primary);">LOCATION</h4>
+                <p>MIT AOE Campus</p>
+                <p>Alandi, Pune</p>
+                <p>Maharashtra, India</p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #222; padding-top: 30px; display: flex; justify-content: space-between; font-size: 12px; color: #444;">
+            <p>© 2026 NEEL GAURAV JADHAV | ALL RIGHTS RESERVED</p>
+            <p>DESIGNED BY NJ_ARCHIVE v3.0</p>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal on scroll logic
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                if (revealTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        });
+
+        // Trigger first reveal on load
+        window.onload = () => {
+            const firstReveal = document.querySelector('.reveal');
+            if(firstReveal) firstReveal.classList.add('active');
+        }
+    </script>
+</body>
+</html>
